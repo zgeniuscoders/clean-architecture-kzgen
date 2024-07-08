@@ -66,4 +66,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.retrofit.v290)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //implementation(libs.koin.bom)
+    implementation(libs.koin.core)
+
+    dependencies {
+        implementation("io.insert-koin:koin-androidx-compose:3.5.0")
+    }
+
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }
