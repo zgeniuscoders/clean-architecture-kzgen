@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import cd.zgeniuscoders.kzgen.auth.ui.views.login.LoginPage
 import cd.zgeniuscoders.kzgen.products.ui.views.products.ProductPage
 import cd.zgeniuscoders.kzgen.ui.theme.KzgenTheme
 
@@ -15,12 +16,12 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
+        enableEdgeToEdge()
 
         setContent {
             KzgenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    ProductPage()
+                    LoginPage()
                 }
             }
         }
