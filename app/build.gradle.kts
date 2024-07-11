@@ -80,4 +80,6 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }

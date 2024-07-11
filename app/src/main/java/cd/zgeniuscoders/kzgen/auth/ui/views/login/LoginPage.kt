@@ -1,5 +1,6 @@
 package cd.zgeniuscoders.kzgen.auth.ui.views.login
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,12 +28,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import cd.zgeniuscoders.kzgen.Colors
+import cd.zgeniuscoders.kzgen.auth.ui.Screen
 import cd.zgeniuscoders.kzgen.auth.ui.views.components.TextFieldComponent
 
 @Preview(showBackground = true)
 @Composable
-fun LoginPage() {
+fun LoginPage(navController: NavHostController) {
 
     var email by remember {
         mutableStateOf("")
@@ -47,6 +50,7 @@ fun LoginPage() {
     }
 
     Surface {
+
         Column {
             Card(
                 modifier = Modifier
@@ -76,7 +80,11 @@ fun LoginPage() {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 "Sign up",
-                modifier = Modifier.padding(horizontal = 10.dp),
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .clickable {
+                        navController.navigate(Screen.register.route)
+                    },
                 fontSize = 18.sp,
                 color = Colors.green
             )

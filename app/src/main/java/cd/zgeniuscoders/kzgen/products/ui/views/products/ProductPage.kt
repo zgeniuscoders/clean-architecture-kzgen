@@ -2,7 +2,6 @@ package cd.zgeniuscoders.kzgen.products.ui.views.products
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,15 +16,32 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -85,7 +101,58 @@ fun ProductPage() {
         Product("1", Category("1", "choose"), "1", emptyList(), "swift nike", "des", 120),
     )
 
-    Scaffold {
+    var items = listOf(
+        BottomNavigationItem(
+            title = "Home",
+            selectedIcon = Icons.Filled.Home,
+            unSelectedIcon = Icons.Outlined.Home,
+        ),
+        BottomNavigationItem(
+            title = "Products",
+            selectedIcon = Icons.Filled.ShoppingCart,
+            unSelectedIcon = Icons.Outlined.ShoppingCart,
+        ),
+        BottomNavigationItem(
+            title = "Notifications",
+            selectedIcon = Icons.Filled.Notifications,
+            unSelectedIcon = Icons.Outlined.Notifications,
+        ),
+        BottomNavigationItem(
+            title = "Settings",
+            selectedIcon = Icons.Filled.Settings,
+            unSelectedIcon = Icons.Outlined.Settings,
+        ),
+    )
+
+    var selectedItemIndex by rememberSaveable {
+        mutableStateOf(0)
+    }
+
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                items.forEachIndexed { index, bottomNavigationItem ->
+                    NavigationBarItem(
+                        selected = selectedItemIndex == index,
+                        onClick = {
+                            selectedItemIndex = index
+                        }, icon = {
+                            Icon(
+                                imageVector = if (selectedItemIndex == index) {
+                                    items[index].selectedIcon
+                                } else {
+                                    items[index].unSelectedIcon
+                                },
+                                contentDescription = items[index].title
+                            )
+                        }
+                    )
+                }
+            }
+        }
+    ) {
+
+
 
         LazyColumn(
             modifier = Modifier
@@ -124,6 +191,12 @@ fun ProductPage() {
     }
 
 }
+
+data class BottomNavigationItem(
+    val title: String,
+    val selectedIcon: ImageVector,
+    val unSelectedIcon: ImageVector
+)
 
 
 @Composable

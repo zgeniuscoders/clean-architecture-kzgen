@@ -1,6 +1,6 @@
 package cd.zgeniuscoders.kzgen.auth.ui.views.register
 
-import android.gesture.Gesture
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,30 +23,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import cd.zgeniuscoders.kzgen.Colors
 import cd.zgeniuscoders.kzgen.auth.ui.views.components.TextFieldComponent
 
-@Preview(showBackground = true)
 @Composable
-fun RegisterPage() {
-
-    var email by remember {
-        mutableStateOf("")
-    }
-
-    var username by remember {
-        mutableStateOf("")
-    }
-
-    var password by remember {
-        mutableStateOf("")
-    }
-
-    var rememberMe by remember {
-        mutableStateOf(false)
-    }
+fun RegisterPage(
+    navController: NavHostController
+) {
 
     Surface {
+
+        var email by remember {
+            mutableStateOf("")
+        }
+
+        var username by remember {
+            mutableStateOf("")
+        }
+
+        var password by remember {
+            mutableStateOf("")
+        }
+
         Column {
             Card(
                 modifier = Modifier
@@ -76,7 +76,11 @@ fun RegisterPage() {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 "Sign in",
-                modifier = Modifier.padding(horizontal = 10.dp),
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .clickable {
+                        navController.popBackStack()
+                    },
                 fontSize = 18.sp,
                 color = Colors.green
             )
@@ -119,3 +123,10 @@ fun RegisterPage() {
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun RegisterPagePreview(){
+    RegisterPage(navController = rememberNavController())
+}
+
