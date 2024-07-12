@@ -1,0 +1,6 @@
+package cd.zgeniuscoders.kzgen.user.domain.models.request
+
+data class LoginRequest(
+    val username: String,
+    val password: String
+)

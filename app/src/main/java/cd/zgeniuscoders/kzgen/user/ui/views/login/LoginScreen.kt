@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen.auth.ui.views.login
+package cd.zgeniuscoders.kzgen.user.ui.views.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -29,13 +29,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import cd.zgeniuscoders.kzgen.Colors
-import cd.zgeniuscoders.kzgen.auth.ui.Screen
-import cd.zgeniuscoders.kzgen.auth.ui.views.components.TextFieldComponent
+import cd.zgeniuscoders.kzgen.Routes
+import cd.zgeniuscoders.kzgen.user.ui.views.components.TextFieldComponent
 
-@Preview(showBackground = true)
+
 @Composable
-fun LoginPage(navController: NavHostController) {
+fun LoginScreen(navController: NavHostController) {
 
     var email by remember {
         mutableStateOf("")
@@ -83,7 +84,7 @@ fun LoginPage(navController: NavHostController) {
                 modifier = Modifier
                     .padding(horizontal = 10.dp)
                     .clickable {
-                        navController.navigate(Screen.register.route)
+                        navController.navigate(Routes.register.route)
                     },
                 fontSize = 18.sp,
                 color = Colors.green
@@ -147,4 +148,11 @@ fun LoginPage(navController: NavHostController) {
 
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoginScreenPreview() {
+    val navController = rememberNavController()
+    LoginScreen(navController = navController)
 }

@@ -9,8 +9,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import cd.zgeniuscoders.kzgen.auth.SetupAuthNavGraph
+import cd.zgeniuscoders.kzgen.user.SetupAuthNavGraph
 import cd.zgeniuscoders.kzgen.ui.theme.KzgenTheme
+import cd.zgeniuscoders.kzgen.views.MainScreen
 
 class MainActivity : ComponentActivity() {
 

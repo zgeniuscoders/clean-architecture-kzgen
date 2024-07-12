@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen
+package cd.zgeniuscoders.kzgen.user.ui.views.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text

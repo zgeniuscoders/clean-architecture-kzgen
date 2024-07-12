@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen.auth.ui.views.components
+package cd.zgeniuscoders.kzgen.user.ui.views.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen.auth.ui.views.register
+package cd.zgeniuscoders.kzgen.user.ui.views.register
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -14,10 +14,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,26 +22,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import cd.zgeniuscoders.kzgen.Colors
-import cd.zgeniuscoders.kzgen.auth.ui.views.components.TextFieldComponent
+import cd.zgeniuscoders.kzgen.user.ui.views.components.TextFieldComponent
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun RegisterPage(
+fun RegisterScreen(
     navController: NavHostController
 ) {
+    val vm = getViewModel<RegisterViewModel>()
 
     Surface {
-
-        var email by remember {
-            mutableStateOf("")
-        }
-
-        var username by remember {
-            mutableStateOf("")
-        }
-
-        var password by remember {
-            mutableStateOf("")
-        }
 
         Column {
             Card(
@@ -74,6 +60,7 @@ fun RegisterPage(
                 modifier = Modifier.padding(horizontal = 10.dp), fontSize = 18.sp,
             )
             Spacer(modifier = Modifier.height(10.dp))
+
             Text(
                 "Sign in",
                 modifier = Modifier
@@ -87,22 +74,37 @@ fun RegisterPage(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            TextFieldComponent(textValue = email, label = "Email") {
-                email = it
+            TextFieldComponent(
+                textValue = vm.state.email,
+                label = "Email"
+            ) {
+                vm.state.email = it
             }
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            TextFieldComponent(textValue = username, label = "Username") {
-                username = it
+            TextFieldComponent(
+                textValue = vm.state.username,
+                label = "Username"
+            ) {
+                vm.state.username = it
             }
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            TextFieldComponent(textValue = password, label = "Password") {
-                password = it
+            TextFieldComponent(
+                textValue = vm.state.password,
+                label = "Password"
+            ) {
+                vm.state.password = it
             }
 
+            TextFieldComponent(
+                textValue = vm.state.confirmPassword,
+                label = "Password confirmation"
+            ) {
+                vm.state.confirmPassword = it
+            }
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -126,7 +128,7 @@ fun RegisterPage(
 
 @Preview(showBackground = true)
 @Composable
-fun RegisterPagePreview(){
-    RegisterPage(navController = rememberNavController())
+fun RegisterScreenPreview() {
+    RegisterScreen(navController = rememberNavController())
 }
 

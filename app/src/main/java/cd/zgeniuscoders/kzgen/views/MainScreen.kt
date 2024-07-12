@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen
+package cd.zgeniuscoders.kzgen.views
 
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
@@ -25,6 +25,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import cd.zgeniuscoders.kzgen.Colors
+import cd.zgeniuscoders.kzgen.Routes
+import cd.zgeniuscoders.kzgen.SetupMainNavGraph
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -35,25 +38,25 @@ fun MainScreen(navController: NavHostController) {
                 title = "Home",
                 selectedIcon = Icons.Filled.Home,
                 unSelectedIcon = Icons.Outlined.Home,
-                route = MainScreenRoute.home.route
+                route = Routes.home.route
             ),
             BottomNavigationItem(
                 title = "Products",
                 selectedIcon = Icons.Filled.ShoppingCart,
                 unSelectedIcon = Icons.Outlined.ShoppingCart,
-                route = MainScreenRoute.products.route
+                route = Routes.products.route
             ),
             BottomNavigationItem(
                 title = "Notifications",
                 selectedIcon = Icons.Filled.Notifications,
                 unSelectedIcon = Icons.Outlined.Notifications,
-                route = MainScreenRoute.notifications.route,
+                route = Routes.notifications.route,
             ),
             BottomNavigationItem(
                 title = "Settings",
                 selectedIcon = Icons.Filled.Settings,
                 unSelectedIcon = Icons.Outlined.Settings,
-                route = MainScreenRoute.settings.route,
+                route = Routes.settings.route,
             ),
         )
 

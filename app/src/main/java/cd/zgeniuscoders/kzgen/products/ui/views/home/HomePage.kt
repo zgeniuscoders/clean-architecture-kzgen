@@ -1,4 +1,4 @@
-package cd.zgeniuscoders.kzgen
+package cd.zgeniuscoders.kzgen.products.ui.views.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cd.zgeniuscoders.kzgen.R
 import cd.zgeniuscoders.kzgen.products.ui.views.products.components.CardItem
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
