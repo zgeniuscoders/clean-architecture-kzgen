@@ -14,7 +14,6 @@ class MyApplication: Application() {
             androidContext(applicationContext)
             modules(
                 productModule
-
             )
         }
     }
